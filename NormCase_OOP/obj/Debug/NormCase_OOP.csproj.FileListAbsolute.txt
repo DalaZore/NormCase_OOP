@@ -1,0 +1,8 @@
+D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.csprojAssemblyReference.cache
+D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.csproj.CoreCompileInputs.cache
+D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\NormCase_OOP.exe
+D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\NormCase_OOP.pdb
+D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.exe
+D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.pdb
+D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\MySql.Data.dll
+D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.csproj.CopyComplete
