@@ -6,3 +6,15 @@ D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.exe
 D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.pdb
 D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\MySql.Data.dll
 D:\GitHub\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.csproj.CopyComplete
+C:\GIT\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.csprojResolveAssemblyReference.cache
+C:\GIT\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.exe
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\NormCase_OOP.exe
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\NormCase_OOP.pdb
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\mscorlib.dll
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\de\mscorlib.resources.dll
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\normidna.nlp
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\normnfc.nlp
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\normnfd.nlp
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\normnfkc.nlp
+C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\normnfkd.nlp
+C:\GIT\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.pdb

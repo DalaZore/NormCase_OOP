@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Cola\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Cola\.Rider2018.3\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Cola\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Cola\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_NormCase_OOP.76695517.00" t="ExcludeRecursive" />
-    <e p="D:\GitHub\NormCase_OOP" t="IncludeFlat">
+    <e p="C:\GIT\NormCase_OOP" t="IncludeFlat">
       <e p="NormCase_OOP" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Classes" t="Include">
@@ -24,5 +20,9 @@
       <e p="NormCase_OOP.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
+    <e p="C:\Users\admin\.Rider2018.3\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\admin\.Rider2018.3\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\admin\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\admin\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_NormCase_OOP.-1947801753.00" t="ExcludeRecursive" />
   </component>
 </project>

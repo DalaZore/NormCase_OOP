@@ -26,8 +26,7 @@ namespace NormCase_OOP.Classes
             _database = "normcase_oop";
             _uid = "root";
             _password = "";
-            string connectionString;
-            connectionString = "SERVER=" + _server + ";" + "DATABASE=" + 
+            string connectionString = "SERVER=" + _server + ";" + "DATABASE=" + 
                                _database + ";" + "UID=" + _uid + ";" + "PASSWORD=" + _password + ";";
 
             _connection = new MySqlConnection(connectionString);
@@ -77,21 +76,59 @@ namespace NormCase_OOP.Classes
             }
         }
 
+        
+        //Login
+        public bool LoginUser(string tmpUsername, string tmpPassword)
+        {
+            try
+            {
+                if (this.OpenConnection())
+                {
+                    MySqlCommand cmd = _connection.CreateCommand();
+                
+                    cmd.CommandText = "SELECT username,passwd FROM kunden WHERE username = @username AND passwd = @passwd";
+                    cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = tmpUsername;
+                    cmd.Parameters.Add("@passwd", MySqlDbType.VarChar).Value = tmpPassword;
+                
+                    //Execute command
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+                    return dr.HasRows;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                this.CloseConnection();
+                
+                
+            }
+        }
+        
         //Insert statement
         public void InsertKunde(string tmpUsername, string tmpPassword, string tmpCredit)
         {
             try
             {
             //open connection
-            if (this.OpenConnection() == true)
+            if (this.OpenConnection())
             {
                 //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = _connection.CreateCommand();
                 
-                cmd.CommandText = "INSERT INTO kunden(username, passwd, Creditcard) VALUES(?username,?passwd,?creditcard)";
-                cmd.Parameters.Add("?username", MySqlDbType.VarChar).Value = tmpUsername;
-                cmd.Parameters.Add("?passwd", MySqlDbType.VarChar).Value = tmpPassword;
-                cmd.Parameters.Add("?creditcard", MySqlDbType.VarChar).Value = tmpCredit;
+                cmd.CommandText = "INSERT INTO kunden(username, passwd, Creditcard) VALUES(@username,@passwd,@creditcard)";
+                cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = tmpUsername;
+                cmd.Parameters.Add("@passwd", MySqlDbType.VarChar).Value = tmpPassword;
+                cmd.Parameters.Add("@creditcard", MySqlDbType.VarChar).Value = tmpCredit;
+                
                 
                 //Execute command
                 cmd.ExecuteNonQuery();
