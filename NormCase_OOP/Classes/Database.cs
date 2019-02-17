@@ -5,16 +5,16 @@ using MySql.Data.MySqlClient;
 
 namespace NormCase_OOP.Classes
 {
-    class DbConnect
+    class Database
     {
-        private MySqlConnection _connection;
+        protected MySqlConnection _connection;
         private string _server;
         private string _database;
         private string _uid;
         private string _password;
 
         //Constructor
-        public DbConnect()
+        public Database()
         {
             Initialize();
         }
@@ -33,7 +33,7 @@ namespace NormCase_OOP.Classes
         }
 
         //open connection to database
-        private bool OpenConnection()
+        protected bool OpenConnection()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace NormCase_OOP.Classes
         }
 
         //Close connection
-        private bool CloseConnection()
+        protected bool CloseConnection()
         {
             try
             {
@@ -76,7 +76,6 @@ namespace NormCase_OOP.Classes
             }
         }
 
-        
         //Login
         public bool LoginUser(string tmpUsername, string tmpPassword)
         {
@@ -132,7 +131,7 @@ namespace NormCase_OOP.Classes
                 
                 //Execute command
                 cmd.ExecuteNonQuery();
-                }
+            }
             }
             catch (MySqlException ex)
             {
@@ -143,63 +142,6 @@ namespace NormCase_OOP.Classes
                 this.CloseConnection();
             }
             
-        }
-        public void InsertArtikel(string tmpArtikel)
-        {
-            string query = "INSERT INTO artikel (Artikel_name) VALUES(tmpArtikel)";
-
-            //open connection
-            if (this.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, _connection);
-        
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-        }
-
-        //Select statement
-        public List <string> [] Select()
-        {
-            string query = "SELECT * FROM artikel";
-
-            //Create a list to store the result
-            List< string >[] list = new List< string >[3];
-            list[0] = new List< string >();
-            list[1] = new List< string >();
-
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, _connection);
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-        
-                //Read the data and store them in the list
-                while (dataReader.Read())
-                {
-                    list[0].Add(dataReader["artikel_id"] + "");
-                    list[1].Add(dataReader["Artikel_name"] + "");
-                }
-
-                //close Data Reader
-                dataReader.Close();
-
-                //close Connection
-                this.CloseConnection();
-
-                //return list to be displayed
-                return list;
-            }
-            else
-            {
-                return list;
-            }
         }
     }
 }
