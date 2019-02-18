@@ -102,75 +102,29 @@ namespace NormCase_OOP
 
     private static void doOrder()
     {
-      var filePath = Path.GetTempPath() + "warenkorb.txt";
-      if (File.Exists(filePath))
-      {
-        Console.WriteLine("Vielen Dank für ihre bestellung!");
-        File.Delete(filePath);
-      }
-      else
-      {
-        Console.WriteLine("Sie haben keine Artikel im Warenkorb!");
-      }
-
-      Console.Read();
+      Warenkorb warenkorb = new Warenkorb();
+      Console.WriteLine(warenkorb.getOrder());
+      Console.ReadKey();
     }
 
     private static void doAddWarenkorb()
     {
-//      var filePath = Path.GetTempPath() + "warenkorb.json";
-//      
-//      if (!File.Exists(filePath))
-//      {
-//        List<Warenkorb> warenkorb = new List<Warenkorb>();
-//        warenkorb.Add(new Warenkorb
-//          {
-//            id = 1,
-//            name = "name"
-//          }
-//        );
-//        using (StreamWriter file = File.CreateText(Path.GetTempPath() + "warenkorb.json"))
-//        {
-//          JsonSerializer serializer = new JsonSerializer();
-//          serializer.Serialize(file, warenkorb);
-//        }
-//      }
-//      else
-//      {
-//        var jsonData = File.ReadAllText(filePath);
-//        var warenkorb = JsonConvert.DeserializeObject<List<Warenkorb>>(jsonData) 
-//                         ?? new List<Warenkorb>();
-//        warenkorb.Add(new Warenkorb
-//        {
-//          id = 1,
-//          name = ""
-//        });
-//        jsonData = JsonConvert.SerializeObject(warenkorb);
-//        File.WriteAllText(filePath, jsonData);
-//      }
-      Artikel katalog = new Artikel();
+      Warenkorb warenkorb = new Warenkorb();
       Console.WriteLine("Welcher Artikel (Artikel Name) willst du in den Warenkorb legen?");
       doListArtikel();
       string _artikel = Console.ReadLine();
 
-      List<string>[] artikel = katalog.searchArtikel(_artikel);
-      if (!artikel.Any())
+      if (warenkorb.addWarenkorb(_artikel))
       {
-        Console.WriteLine("Artikel nicht gefunden!");
+        Console.WriteLine("Artikel Erfolgreich hinzugefügt!");
       }
       else
       {
-        var filePath = Path.GetTempPath() + "warenkorb.txt";
-        foreach (List<string> addArtikel in katalog.searchArtikel(_artikel))
-        {
-          using (StreamWriter file = 
-            new StreamWriter(filePath, true))
-          {
-            file.WriteLine(addArtikel[1]);
-          }
-        }
+        Console.WriteLine("Artikel nicht gefunden!");
       }
-      
+
+      Console.ReadKey();
+
 
     }
     private static void doListWarenkorb()
@@ -201,7 +155,7 @@ namespace NormCase_OOP
         Console.WriteLine("Sie haben keine Artikel im Warenkorb!");
       }
 
-      Console.Read();
+      Console.ReadKey();
     }
 
     private static void doListSearch()
@@ -214,7 +168,7 @@ namespace NormCase_OOP
       {
         Console.WriteLine("{0}             {1}",artikel[0], artikel[1]);
       }
-      Console.Read();
+      Console.ReadKey();
     }
     
     private static void doListArtikel()
@@ -226,7 +180,7 @@ namespace NormCase_OOP
         Console.WriteLine("{0}             {1}",artikel[0], artikel[1]);
       }
 
-      Console.Read();
+      Console.ReadKey();
     }
     
     private static void doAddArtikel()

@@ -11,9 +11,8 @@ namespace NormCase_OOP.Classes
             string query = "SELECT * FROM artikel";
 
             //Create a list to store the result
-            List< string >[] list = new List< string >[2];
+            List< string >[] list = new List< string >[1];
             list[0] = new List< string >();
-            list[1] = new List< string >();
 
             //Open connection
             if (OpenConnection())

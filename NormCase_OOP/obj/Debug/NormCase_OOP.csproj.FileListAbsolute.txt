@@ -21,3 +21,6 @@ C:\GIT\NormCase_OOP\NormCase_OOP\obj\Debug\NormCase_OOP.pdb
 C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\Newtonsoft.Json.dll
 C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\Newtonsoft.Json.pdb
 C:\GIT\NormCase_OOP\NormCase_OOP\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\Newtonsoft.Json.pdb
+D:\GitHub\NormCase_OOP\NormCase_OOP\bin\Debug\Newtonsoft.Json.xml

@@ -4,8 +4,7 @@ namespace NormCase_OOP.Classes
     {
         #region Constructor
         public User()
-        {
-            Warenkorb warenkorb = new Warenkorb();
+        {  
         }
         #endregion
     }
