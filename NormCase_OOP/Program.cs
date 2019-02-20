@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NormCase_OOP.Classes;
 
 namespace NormCase_OOP
@@ -109,19 +111,49 @@ namespace NormCase_OOP
 
     private static void doAddWarenkorb()
     {
-      Warenkorb warenkorb = new Warenkorb();
-      Console.WriteLine("Welcher Artikel (Artikel Name) willst du in den Warenkorb legen?");
-      doListArtikel();
-      string _artikel = Console.ReadLine();
-
-      if (warenkorb.addWarenkorb(_artikel))
+      
+      var filePath = Path.GetTempPath() + "warenkorb.json";
+      
+      if (!File.Exists(filePath))
       {
-        Console.WriteLine("Artikel Erfolgreich hinzugefügt!");
+        List<Warenkorb> warenkorb = new List<Warenkorb>{new Warenkorb{id=1,name="artikel"}};
+//        warenkorb.Add(new Warenkorb
+//          {
+//            id = 2,
+//            name = "name"
+//          }
+//        );
+Console.WriteLine(warenkorb);
+        using (StreamWriter file = File.CreateText(Path.GetTempPath() + "warenkorb.json"))
+        {
+          JsonSerializer serializer = new JsonSerializer();
+          serializer.Serialize(file,new{Warenkorb=warenkorb});
+        }
       }
       else
       {
-        Console.WriteLine("Artikel nicht gefunden!");
+        var jsonData = File.ReadAllText(filePath);
+//        var warenkorb = JsonConvert.DeserializeObject<List<Warenkorb>>(jsonData) 
+//                         ?? new List<Warenkorb>();
+//        warenkorb.Add(new Warenkorb
+//        {
+//          id = 1,
+//          name = ""
+//        });
+//        jsonData = JsonConvert.SerializeObject(new{Warenkorb=warenkorb});
+//        File.WriteAllText(filePath, jsonData);
+
+        var list = JsonConvert.DeserializeObject<List<Warenkorb>>(jsonData);
+        list.Add(new Warenkorb{id=1,name="artikel"});
+        var convertedJson = JsonConvert.SerializeObject(list);
+        Console.WriteLine(list);
+        
+
+
+
+
       }
+
 
       Console.ReadKey();
 
@@ -129,32 +161,19 @@ namespace NormCase_OOP
     }
     private static void doListWarenkorb()
     {
-//      string _json = "";
-//      RootObject item = new RootObject();
-//      using (StreamReader r = new StreamReader(Path.GetTempPath() + "warenkorb.json"))
-//      {
-//        _json = r.ReadToEnd();
-//        item = JsonConvert.DeserializeObject<RootObject>(_json);
-//      }
-//      Console.WriteLine("Artikel ID    Artikel Name");
-//      foreach (var artikel in item.Warenkorb)
-//      {
-//        Console.WriteLine("{0}             {1}",artikel.id ,artikel.name);
-//      }
-      var filePath = Path.GetTempPath() + "warenkorb.txt";
-      if (File.Exists(filePath))
+      string _json = "";
+      RootObject item = new RootObject();
+      using (StreamReader r = new StreamReader(Path.GetTempPath() + "warenkorb.json"))
       {
-        string[] _artikel = File.ReadAllLines(filePath);
-        foreach (string artikel in _artikel)
-        {
-          Console.WriteLine(artikel);
-        }
+        _json = r.ReadToEnd();
+        item = JsonConvert.DeserializeObject<RootObject>(_json);
       }
-      else
+      Console.WriteLine("Artikel ID    Artikel Name");
+      foreach (var artikel in item.Warenkorb)
       {
-        Console.WriteLine("Sie haben keine Artikel im Warenkorb!");
+        Console.WriteLine("{0}             {1}",artikel.id ,artikel.name);
       }
-
+      
       Console.ReadKey();
     }
 
@@ -173,6 +192,7 @@ namespace NormCase_OOP
     
     private static void doListArtikel()
     {
+      
       Artikel katalog = new Artikel();
       Console.WriteLine("Artikel ID    Artikel Name");
       foreach (List<string> artikel in katalog.listAll())
