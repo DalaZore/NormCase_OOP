@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2019 at 01:31 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Erstellungszeit: 22. Feb 2019 um 10:48
+-- Server-Version: 10.1.37-MariaDB
+-- PHP-Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `normcase_oop`
+-- Datenbank: `normcase_oop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
+-- Tabellenstruktur für Tabelle `artikel`
 --
 
 CREATE TABLE `artikel` (
@@ -34,67 +34,67 @@ CREATE TABLE `artikel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `artikel`
+-- Daten für Tabelle `artikel`
 --
 
 INSERT INTO `artikel` (`artikel_id`, `artikel_name`) VALUES
-(1, 'test_artikel'),
-(2, 'testtt');
+(1, 'hahahahahahah'),
+(2, 'asdfgh'),
+(3, 'tester1'),
+(4, 'debuging_sucks');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kunden`
+-- Tabellenstruktur für Tabelle `kunden`
 --
 
 CREATE TABLE `kunden` (
-  `user_id` int(50) NOT NULL,
+  `kunden_id` int(50) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `passwd` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Creditcard` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `kunden`
+-- Daten für Tabelle `kunden`
 --
 
-INSERT INTO `kunden` (`user_id`, `username`, `passwd`, `Creditcard`) VALUES
-(1, 'test', 'tester123', '123456789'),
-(2, 'test', 'test', '1234'),
-(3, 'test1', 'test1', '123234345'),
-(4, 'test2', 'test2', '234234234234');
+INSERT INTO `kunden` (`kunden_id`, `username`, `passwd`, `Creditcard`) VALUES
+(1, 'test', 'tester321', '123456789'),
+(3, 'test', 'test', '123');
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `artikel`
+-- Indizes für die Tabelle `artikel`
 --
 ALTER TABLE `artikel`
   ADD PRIMARY KEY (`artikel_id`);
 
 --
--- Indexes for table `kunden`
+-- Indizes für die Tabelle `kunden`
 --
 ALTER TABLE `kunden`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`kunden_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `artikel`
+-- AUTO_INCREMENT für Tabelle `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `artikel_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `artikel_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `kunden`
+-- AUTO_INCREMENT für Tabelle `kunden`
 --
 ALTER TABLE `kunden`
-  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kunden_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
