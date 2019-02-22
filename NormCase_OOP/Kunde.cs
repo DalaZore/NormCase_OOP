@@ -37,7 +37,6 @@ namespace NormCase_OOP
       
       Console.WriteLine("Welcome to the Shop!");
       
-      User kunde = new User();
       while(isLoggedIn)
       {
         Console.WriteLine("(1) Artikel erstellen");
@@ -199,7 +198,7 @@ namespace NormCase_OOP
       Console.WriteLine("Artikel ID    Artikel Name");
       foreach (List<string> artikel in katalog.searchArtikelName(_searchTerm))
       {
-        Console.WriteLine("{0}             {1}",artikel[0], artikel[1]);
+        Console.WriteLine("{0}             {1}",artikel?[0], artikel?[1]);
       }
       Console.ReadKey();
     }
@@ -211,7 +210,9 @@ namespace NormCase_OOP
       Console.WriteLine("Artikel ID    Artikel Name");
       foreach (List<string> artikel in katalog.listAll())
       {
-        Console.WriteLine("{0}             {1}",artikel[0], artikel[1]);
+
+          Console.WriteLine("{0}             {1}",artikel?[0], artikel?[1]);
+
       }
 
       Console.ReadKey();

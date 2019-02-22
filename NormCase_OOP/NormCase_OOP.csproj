@@ -47,9 +47,8 @@
   <ItemGroup>
     <Compile Include="Classes\Artikel.cs" />
     <Compile Include="Classes\Database.cs" />
-    <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\Warenkorb.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

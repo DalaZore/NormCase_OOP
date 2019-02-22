@@ -11,47 +11,48 @@ namespace NormCase_OOP.Classes
             string query = "SELECT * FROM artikel";
 
             //Create a list to store the result
-            List< string >[] list = new List< string >[1];
-            list[0] = new List< string >();
+            List< string >[] list = new List< string >[12];
 
             //Open connection
-            if (OpenConnection())
-            {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, _connection);
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-        
-                //Read the data and store them in the list
-                var i = 0;
-                while (dataReader.Read())
+                if (OpenConnection())
                 {
+
                     
-                    list[i].Add(dataReader["artikel_id"] + "");
-                    list[i].Add(dataReader["artikel_name"] + "");
-                    i++;
+
+                    //Create Command
+                    MySqlCommand cmd = new MySqlCommand(query, _connection);
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    //Read the data and store them in the list
+                    var i = 0;
+                    while (dataReader.Read())
+                    {
+                        
+                        list[i] = new List<string>();
+
+                        list[i].Add(dataReader["artikel_id"] + "");
+                        list[i].Add(dataReader["artikel_name"] + "");
+                        i++;
+                    }
+
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    this.CloseConnection();
+
+                    //return list to be displayed
+                    return list;
                 }
-
-                //close Data Reader
-                dataReader.Close();
-
-                //close Connection
-                this.CloseConnection();
-
-                //return list to be displayed
-                return list;
+                else
+                {
+                    return list;
+                }
             }
-            else
-            {
-                return list;
-            }
-        }
-        
         public List <string> [] searchArtikelName(string tmpSearchTerm)
         {
             //Create a list to store the result
-            List< string >[] list = new List< string >[1];
-            list[0] = new List< string >();
+            List< string >[] list = new List< string >[7];
 
 
             //Open connection
@@ -68,7 +69,7 @@ namespace NormCase_OOP.Classes
                 var i = 0;
                 while (dataReader.Read())
                 {
-                    
+                    list[i] = new List< string >();
                     list[i].Add(dataReader["artikel_id"] + "");
                     list[i].Add(dataReader["artikel_name"] + "");
                     i++;

@@ -11,13 +11,12 @@
         <e p="Classes" t="Include">
           <e p="Artikel.cs" t="Include" />
           <e p="Database.cs" t="Include" />
-          <e p="User.cs" t="Include" />
           <e p="Warenkorb.cs" t="Include" />
         </e>
+        <e p="Kunde.cs" t="Include" />
         <e p="NormCase_OOP.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
-        <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
