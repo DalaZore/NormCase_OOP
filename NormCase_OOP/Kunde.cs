@@ -43,34 +43,44 @@ namespace NormCase_OOP
                 Console.WriteLine("(6) Artikel in Warenkorb anzeigen");
                 Console.WriteLine("(7) Warenkorb in bestellung geben");
                 Console.WriteLine("(0) Programm beenden");
-        
-                switch(Int32.Parse(Console.ReadLine()))
+
+                var userinput = Console.ReadLine();
+                int userInputParsed;
+                if (Int32.TryParse(userinput, out userInputParsed))
                 {
-                    case 1:
-                        doAddArtikel();
-                        break;
-                    case 2:
-                        doListArtikel();
-                        break;
-                    case 3:
-                        doListSearch();
-                        break;
-                    case 4:
-                        doAddWarenkorb();
-                        break;
-                    case 5:
-                        doListWarenkorb();
-                        break;
-                    case 6:
-                        doDelete();
-                        break;
-                    case 7:
-                        doOrder();
-                        break;
-                    default:
-                        Environment.Exit(0);
-                        break;
+                    switch(userInputParsed)
+                    {
+                        case 1:
+                            doAddArtikel();
+                            break;
+                        case 2:
+                            doListArtikel();
+                            break;
+                        case 3:
+                            doListSearch();
+                            break;
+                        case 4:
+                            doAddWarenkorb();
+                            break;
+                        case 5:
+                            doListWarenkorb();
+                            break;
+                        case 6:
+                            doDelete();
+                            break;
+                        case 7:
+                            doOrder();
+                            break;
+                        default:
+                            Environment.Exit(0);
+                            break;
+                    }
                 }
+                else
+                {
+                    Console.WriteLine("Gebe eine gültige Eingabe ein!");
+                }
+                
             }
         }
 
