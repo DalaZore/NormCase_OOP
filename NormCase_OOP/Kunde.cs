@@ -40,7 +40,7 @@ namespace NormCase_OOP
                 Console.WriteLine("(3) Artikel suchen");
                 Console.WriteLine("(4) Artikel in Warenkorb aufnehmen");
                 Console.WriteLine("(5) Artikel in Warenkorb anzeigen");
-                Console.WriteLine("(6) Artikel in Warenkorb anzeigen");
+                Console.WriteLine("(6) Warenkorb leeren");
                 Console.WriteLine("(7) Warenkorb in bestellung geben");
                 Console.WriteLine("(0) Programm beenden");
 
