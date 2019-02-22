@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 22. Feb 2019 um 10:48
+-- Erstellungszeit: 22. Feb 2019 um 15:20
 -- Server-Version: 10.1.37-MariaDB
 -- PHP-Version: 7.3.1
 
@@ -41,7 +41,8 @@ INSERT INTO `artikel` (`artikel_id`, `artikel_name`) VALUES
 (1, 'hahahahahahah'),
 (2, 'asdfgh'),
 (3, 'tester1'),
-(4, 'debuging_sucks');
+(4, 'debuging_sucks'),
+(5, 'a');
 
 -- --------------------------------------------------------
 
@@ -61,8 +62,12 @@ CREATE TABLE `kunden` (
 --
 
 INSERT INTO `kunden` (`kunden_id`, `username`, `passwd`, `Creditcard`) VALUES
-(1, 'test', 'tester321', '123456789'),
-(3, 'test', 'test', '123');
+(1, 'test', 'test', '321'),
+(3, 'haha', 'hehe', '32123'),
+(4, 'tester', '123', 'test'),
+(5, 'huhu', 'haha', '123'),
+(6, 'sup', 'sup', '3'),
+(7, 'hallo', 'test', '123');
 
 --
 -- Indizes der exportierten Tabellen
@@ -78,7 +83,8 @@ ALTER TABLE `artikel`
 -- Indizes für die Tabelle `kunden`
 --
 ALTER TABLE `kunden`
-  ADD PRIMARY KEY (`kunden_id`);
+  ADD PRIMARY KEY (`kunden_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -88,13 +94,13 @@ ALTER TABLE `kunden`
 -- AUTO_INCREMENT für Tabelle `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `artikel_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `artikel_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT für Tabelle `kunden`
 --
 ALTER TABLE `kunden`
-  MODIFY `kunden_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kunden_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

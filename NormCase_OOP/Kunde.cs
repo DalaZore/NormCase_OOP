@@ -112,23 +112,46 @@ namespace NormCase_OOP
     {   
       var filePath = Path.GetTempPath() + "warenkorb.json";
       Artikel katalog = new Artikel();
+      doListArtikel();
       Console.WriteLine("Welchen Artikel möchten Sie dem Warenkorb hinzufügen?");
-      Console.WriteLine("Geben Sie die ID des Artikels ein.");
-      var ID = 0;
-      var Name = "null";
+      Console.WriteLine("Geben Sie die ID oder den Namen des Artikels ein.");
+      int ID;
+      string Name;
       var input = Console.ReadLine();
+      Name = input;
       if (Int32.TryParse(input, out ID))
       {
         foreach (List<string> artikel in katalog.searchArtikelID(ID))
         {
-          ID = Int32.Parse(artikel?[0]);
-          Name = artikel?[1];
+          if (artikel[0] == null)
+          {
+            Console.WriteLine("Artikel nicht gefunden!");
+            return;
+          }
+          ID = Int32.Parse(artikel[0]);
+          Name = artikel[1];
         }
       }
       else
       {
-        Console.WriteLine("Gebe eine ID an!");
-        return;
+        
+        foreach (List<string> artikel in katalog.searchArtikelName(Name))
+        {
+          if (artikel[0] != null)
+          {
+            ID = Int32.Parse(artikel[0]);
+            Name = artikel[1];
+            
+          }
+          else
+          {
+            Console.WriteLine("Artikel nicht gefunden!");
+            return;
+          }
+          
+          
+          
+        }
       }
       
       if (!File.Exists(filePath))

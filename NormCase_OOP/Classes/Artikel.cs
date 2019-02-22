@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MySql.Data.MySqlClient;
 
 namespace NormCase_OOP.Classes
@@ -11,7 +12,7 @@ namespace NormCase_OOP.Classes
             string query = "SELECT * FROM artikel";
 
             //Create a list to store the result
-            List< string >[] list = new List< string >[12];
+            List< string >[] list = new List< string >[100];
 
             //Open connection
                 if (OpenConnection())
@@ -37,22 +38,24 @@ namespace NormCase_OOP.Classes
 
                     //close Data Reader
                     dataReader.Close();
-
+                    
                     //close Connection
                     this.CloseConnection();
 
                     //return list to be displayed
-                    return list;
+                    var lists = list.Where(artikel => artikel != null).ToArray();
+                    return lists;
                 }
                 else
                 {
-                    return list;
+                    var lists = list.Where(artikel => artikel != null).ToArray();
+                    return lists;
                 }
             }
         public List <string> [] searchArtikelName(string tmpSearchTerm)
         {
             //Create a list to store the result
-            List< string >[] list = new List< string >[7];
+            List< string >[] list = new List< string >[100];
 
 
             //Open connection
@@ -82,11 +85,13 @@ namespace NormCase_OOP.Classes
                 this.CloseConnection();
 
                 //return list to be displayed
-                return list;
+                var lists = list.Where(artikel => artikel != null).ToArray();
+                return lists;
             }
             else
             {
-                return list;
+                var lists = list.Where(artikel => artikel != null).ToArray();
+                return lists;
             }
         }
         
@@ -111,7 +116,6 @@ namespace NormCase_OOP.Classes
                 var i = 0;
                 while (dataReader.Read())
                 {
-                    
                     list[i].Add(dataReader["artikel_id"] + "");
                     list[i].Add(dataReader["artikel_name"] + "");
                     i++;
@@ -124,11 +128,13 @@ namespace NormCase_OOP.Classes
                 this.CloseConnection();
 
                 //return list to be displayed
-                return list;
+                var lists = list.Where(artikel => artikel != null).ToArray();
+                return lists;
             }
             else
             {
-                return list;
+                var lists = list.Where(artikel => artikel != null).ToArray();
+                return lists;
             }
         }
         
