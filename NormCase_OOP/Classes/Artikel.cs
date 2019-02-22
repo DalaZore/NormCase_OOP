@@ -15,43 +15,43 @@ namespace NormCase_OOP.Classes
             List< string >[] list = new List< string >[100];
 
             //Open connection
-                if (OpenConnection())
-                {
+            if (OpenConnection())
+            {
 
                     
 
-                    //Create Command
-                    MySqlCommand cmd = new MySqlCommand(query, _connection);
-                    //Create a data reader and Execute the command
-                    MySqlDataReader dataReader = cmd.ExecuteReader();
-                    //Read the data and store them in the list
-                    var i = 0;
-                    while (dataReader.Read())
-                    {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, _connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                //Read the data and store them in the list
+                var i = 0;
+                while (dataReader.Read())
+                {
                         
-                        list[i] = new List<string>();
+                    list[i] = new List<string>();
 
-                        list[i].Add(dataReader["artikel_id"] + "");
-                        list[i].Add(dataReader["artikel_name"] + "");
-                        i++;
-                    }
+                    list[i].Add(dataReader["artikel_id"] + "");
+                    list[i].Add(dataReader["artikel_name"] + "");
+                    i++;
+                }
 
-                    //close Data Reader
-                    dataReader.Close();
+                //close Data Reader
+                dataReader.Close();
                     
-                    //close Connection
-                    this.CloseConnection();
+                //close Connection
+                this.CloseConnection();
 
-                    //return list to be displayed
-                    var lists = list.Where(artikel => artikel != null).ToArray();
-                    return lists;
-                }
-                else
-                {
-                    var lists = list.Where(artikel => artikel != null).ToArray();
-                    return lists;
-                }
+                //return list to be displayed
+                var lists = list.Where(artikel => artikel != null).ToArray();
+                return lists;
             }
+            else
+            {
+                var lists = list.Where(artikel => artikel != null).ToArray();
+                return lists;
+            }
+        }
         public List <string> [] searchArtikelName(string tmpSearchTerm)
         {
             //Create a list to store the result

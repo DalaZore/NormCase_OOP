@@ -32,6 +32,27 @@ namespace NormCase_OOP.Classes
             
             return _orderMessage;  
         }
+        
+        public string delete()
+        {
+            var filePath = Path.GetTempPath() + "warenkorb.json";
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                string _orderMessage;
+                _orderMessage = "Warenkorb erfolgreich gelöscht!";
+            
+                return _orderMessage;  
+            }
+            else
+            {
+                string _orderMessage;
+                _orderMessage = "Keine Artikel im Warenkorb!";
+            
+                return _orderMessage;  
+            }
+            
+        }
     }
     
     public class RootObject

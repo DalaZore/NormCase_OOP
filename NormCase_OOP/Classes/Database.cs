@@ -27,7 +27,7 @@ namespace NormCase_OOP.Classes
             _uid = "root";
             _password = "";
             string connectionString = "SERVER=" + _server + ";" + "DATABASE=" + 
-                               _database + ";" + "UID=" + _uid + ";" + "PASSWORD=" + _password + ";";
+                                      _database + ";" + "UID=" + _uid + ";" + "PASSWORD=" + _password + ";";
 
             _connection = new MySqlConnection(connectionString);
         }
@@ -117,21 +117,21 @@ namespace NormCase_OOP.Classes
         {
             try
             {
-            //open connection
-            if (this.OpenConnection())
-            {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = _connection.CreateCommand();
+                //open connection
+                if (this.OpenConnection())
+                {
+                    //create command and assign the query and connection from the constructor
+                    MySqlCommand cmd = _connection.CreateCommand();
                 
-                cmd.CommandText = "INSERT INTO kunden(username, passwd, Creditcard) VALUES(@username,@passwd,@creditcard)";
-                cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = tmpUsername;
-                cmd.Parameters.Add("@passwd", MySqlDbType.VarChar).Value = tmpPassword;
-                cmd.Parameters.Add("@creditcard", MySqlDbType.VarChar).Value = tmpCredit;
+                    cmd.CommandText = "INSERT INTO kunden(username, passwd, Creditcard) VALUES(@username,@passwd,@creditcard)";
+                    cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = tmpUsername;
+                    cmd.Parameters.Add("@passwd", MySqlDbType.VarChar).Value = tmpPassword;
+                    cmd.Parameters.Add("@creditcard", MySqlDbType.VarChar).Value = tmpCredit;
                 
                 
-                //Execute command
-                cmd.ExecuteNonQuery();
-            }
+                    //Execute command
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (MySqlException ex)
             {
