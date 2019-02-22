@@ -15,7 +15,7 @@ namespace NormCase_OOP.Classes
         
         private bool order()
         {
-            var filePath = Path.GetTempPath() + "warenkorb.txt";
+            var filePath = Path.GetTempPath() + "warenkorb.json";
             if (File.Exists(filePath))
             {  
                 File.Delete(filePath);
@@ -23,35 +23,6 @@ namespace NormCase_OOP.Classes
             }
 
             return false;
-        }
-        public bool addWarenkorb(string _artikel)
-        {
-
-            Artikel katalog = new Artikel();
-
-            katalog.listAll();
-
-
-            List<string>[] artikel = katalog.searchArtikel(_artikel);
-            if (!artikel.Any())
-            {
-
-                return false;
-            }
-            else
-            {
-                var filePath = Path.GetTempPath() + "warenkorb.txt";
-                foreach (List<string> addArtikel in katalog.searchArtikel(_artikel))
-                {
-                    using (StreamWriter file =
-                        new StreamWriter(filePath, true))
-                    {
-                        file.WriteLine(addArtikel[1]);
-                    }
-                }
-
-                return true;
-            }
         }
 
         public string getOrder()

@@ -110,71 +110,85 @@ namespace NormCase_OOP
     }
 
     private static void doAddWarenkorb()
-    {
-      
+    {   
       var filePath = Path.GetTempPath() + "warenkorb.json";
+      Artikel katalog = new Artikel();
+      Console.WriteLine("Welchen Artikel möchten Sie dem Warenkorb hinzufügen?");
+      Console.WriteLine("Geben Sie die ID oder den Namen des Artikels ein.");
+      var ID = 0;
+      var Name = "null";
+      var input = Console.ReadLine();
+      if (Int32.TryParse(input, out ID))
+      {
+        foreach (List<string> artikel in katalog.searchArtikelID(ID))
+        {
+          ID = Int32.Parse(artikel[0]);
+          Name = artikel[1];
+        }
+      }
+      else
+      {
+        Name = input;
+        foreach (List<string> artikel in katalog.searchArtikelName(Name))
+        {
+          ID = Int32.Parse(artikel[0]);
+          Name = artikel[1];
+        }
+      }
       
       if (!File.Exists(filePath))
       {
-        List<Warenkorb> warenkorb = new List<Warenkorb>{new Warenkorb{id=1,name="artikel"}};
-//        warenkorb.Add(new Warenkorb
-//          {
-//            id = 2,
-//            name = "name"
-//          }
-//        );
-Console.WriteLine(warenkorb);
+        RootObject rootobject = new RootObject
+        {
+          Warenkorb = new List<Warenkorb>
+          {
+            new Warenkorb {id = ID, name = Name}
+          }
+        };
         using (StreamWriter file = File.CreateText(Path.GetTempPath() + "warenkorb.json"))
         {
           JsonSerializer serializer = new JsonSerializer();
-          serializer.Serialize(file,new{Warenkorb=warenkorb});
+          serializer.Serialize(file,rootobject);
         }
       }
       else
       {
         var jsonData = File.ReadAllText(filePath);
-//        var warenkorb = JsonConvert.DeserializeObject<List<Warenkorb>>(jsonData) 
-//                         ?? new List<Warenkorb>();
-//        warenkorb.Add(new Warenkorb
-//        {
-//          id = 1,
-//          name = ""
-//        });
-//        jsonData = JsonConvert.SerializeObject(new{Warenkorb=warenkorb});
-//        File.WriteAllText(filePath, jsonData);
-
-        var list = JsonConvert.DeserializeObject<List<Warenkorb>>(jsonData);
-        list.Add(new Warenkorb{id=1,name="artikel"});
-        var convertedJson = JsonConvert.SerializeObject(list);
-        Console.WriteLine(list);
-        
-
-
-
-
+          RootObject deserializedRootObject = JsonConvert.DeserializeObject<RootObject>(jsonData);
+          deserializedRootObject.Warenkorb.Add(new Warenkorb{id=ID,name=Name});
+          using (StreamWriter file = File.CreateText(Path.GetTempPath() + "warenkorb.json"))
+          {
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Serialize(file,deserializedRootObject);
+          }
       }
-
-
       Console.ReadKey();
-
-
     }
+
     private static void doListWarenkorb()
     {
-      string _json = "";
-      RootObject item = new RootObject();
-      using (StreamReader r = new StreamReader(Path.GetTempPath() + "warenkorb.json"))
+      var filePath = Path.GetTempPath() + "warenkorb.json";
+      if (File.Exists(filePath))
       {
-        _json = r.ReadToEnd();
-        item = JsonConvert.DeserializeObject<RootObject>(_json);
+        string _json = "";
+        RootObject item = new RootObject();
+        using (StreamReader r = new StreamReader(Path.GetTempPath() + "warenkorb.json"))
+        {
+          _json = r.ReadToEnd();
+          item = JsonConvert.DeserializeObject<RootObject>(_json);
+        }
+  
+        Console.WriteLine("Artikel ID    Artikel Name");
+        foreach (var artikel in item.Warenkorb)
+        {
+          Console.WriteLine("{0}             {1}", artikel.id, artikel.name);
+        }
       }
-      Console.WriteLine("Artikel ID    Artikel Name");
-      foreach (var artikel in item.Warenkorb)
+      else
       {
-        Console.WriteLine("{0}             {1}",artikel.id ,artikel.name);
+        Console.WriteLine("Du hast keine Artikel im Warenkorb!");
       }
-      
-      Console.ReadKey();
+    Console.ReadKey();
     }
 
     private static void doListSearch()
@@ -183,7 +197,7 @@ Console.WriteLine(warenkorb);
       Console.WriteLine("Geben Sie ihr Suchwort ein");
       string _searchTerm = Console.ReadLine();
       Console.WriteLine("Artikel ID    Artikel Name");
-      foreach (List<string> artikel in katalog.searchArtikel(_searchTerm))
+      foreach (List<string> artikel in katalog.searchArtikelName(_searchTerm))
       {
         Console.WriteLine("{0}             {1}",artikel[0], artikel[1]);
       }
